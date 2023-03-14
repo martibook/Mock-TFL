@@ -1,47 +1,53 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import SyncButton from './components/SyncButton.vue';
+import TheConversation from './components/TheConversation.vue'
+import TheMessage from './components/TheMessage.vue';
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="parent">
+    <header>
+      <SyncButton/>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+      <div class="the-conversation">
+        <TheConversation />
+      </div>
+      <div class="the-message">
+        <TheMessage></TheMessage>
+      </div>
+    </main>
+  </div>
 </template>
 
 <style scoped>
+
+.parent {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 header {
-  line-height: 1.5;
+  display: flex;
+  /* place-items: center; */
+  /* line-height: 1.5; */
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+main {
+  display: grid;
+  grid-template-columns: minmax(12rem, 25%) minmax(60rem, auto);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.the-conversation {
+  display: grid;
+  grid-template-rows: auto;
 }
+
+.the-message {
+  display: flex;
+  place-items: center;
+  background-color: rgb(234, 239, 243);
+}
+
 </style>
