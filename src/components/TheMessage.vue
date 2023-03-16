@@ -1,27 +1,16 @@
 <script>
+import { store } from '../store';
+
 export default {
-    props: {
-        messages: {
-            type: Array,
-            required: true,
-            default: [
-                {
-                    body: "Hello",
-                    direction: "in"
-                },
-                {
-                    body: "Hi!",
-                    direction: "out"
-                }
-            ]
-        }
+    data() {
+        return store
     }
 }
 </script>
 
 <template>
     <ul>
-        <li v-for="(message, i) in messages">
+        <li v-for="(message, i) in messages.filter((message) => message.conversationId == currentConversationId)">
             <div class="text-in">{{ message.body }}</div>
         </li>
     </ul>

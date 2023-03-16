@@ -4,26 +4,19 @@ import EcosystemIcon from './icons/IconEcosystem.vue'
 </script>
 
 <script>
+import { store } from '../store'
+
 export default {
   data() {
-    return {
-      conversations: [
-          {
-            name: 'Moley'
-          },
-          {
-            name: 'Bear'
-          }
-        ]
-    }
+    return store
   }
 }
 </script>
 
 <template>
 
-  <ul v-for="(conv, i) in conversations">
-    <li>
+  <ul>
+    <li v-for="(conv, i) in conversations" @click="currentConversationId = conv.id">
       <ConversationItem :name="conv.name">
         <template #avatar>
           <EcosystemIcon />
