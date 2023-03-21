@@ -30,6 +30,7 @@ import TheMessage from './components/TheMessage.vue';
 
 header {
   display: flex;
+  margin-bottom: 3rem;
   /* place-items: center; */
   /* line-height: 1.5; */
 }

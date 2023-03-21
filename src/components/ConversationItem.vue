@@ -12,9 +12,9 @@
 
 <template>
   <div class="item">
-    <i>
+    <!-- <i>
       <slot name="avatar"></slot>
-    </i>
+    </i> -->
     <div class="contact">
       <h3>
         {{ name }}
@@ -25,7 +25,6 @@
 
 <style scoped>
 .item {
-  margin-bottom: 2rem;
   display: flex;
 }
 
