@@ -16,11 +16,11 @@ export default {
 <template>
 
   <ul>
-    <li v-for="(conv, i) in conversations" @click="currentConversationId = conv.id">
+    <li v-for="(conv, i) in conversations" :class="{ active: conv.id == currentConversationId }"  @click="currentConversationId = conv.id">
       <ConversationItem :name="conv.name">
-        <template #avatar>
+        <!-- <template #avatar>
           <EcosystemIcon />
-        </template>
+        </template> -->
       </ConversationItem>
     </li>
   </ul>
@@ -31,5 +31,14 @@ export default {
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+li {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.active {
+  background-color: rgb(179, 199, 230);
 }
 </style>
