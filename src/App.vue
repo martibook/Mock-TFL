@@ -38,17 +38,20 @@ header {
 main {
   display: grid;
   grid-template-columns: minmax(12rem, 25%) minmax(60rem, auto);
+  height: 40rem;
 }
 
 .the-conversation {
   display: grid;
   grid-template-rows: auto;
+  overflow-y: scroll;
 }
 
 .the-message {
-  display: flex;
+  /* display: flex; */
   place-items: center;
   background-color: rgb(234, 239, 243);
+  overflow-y: scroll;
 }
 
 </style>
