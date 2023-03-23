@@ -1,6 +1,5 @@
 <script setup>
 import ConversationItem from './ConversationItem.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
 </script>
 
 <script>
@@ -16,7 +15,7 @@ export default {
 <template>
 
   <ul>
-    <li v-for="(conv, i) in conversations" :class="{ active: conv.id == currentConversationId }"  @click="currentConversationId = conv.id">
+    <li v-for="(conv, i) in ltwConversations" :class="{ active: conv.id == ltwCurrentConversationId }"  @click="ltwCurrentConversationId = conv.id">
       <ConversationItem :name="conv.recipients[0].phoneNumber">
         <!-- <template #avatar>
           <EcosystemIcon />

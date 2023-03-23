@@ -1,6 +1,6 @@
 <script>
   import { MDBBtn } from "mdb-vue-ui-kit";
-  import { initConversations, initCurrentConversationId, initMessages, store } from '../store';
+  import { initConversations, initCurrentConversationId, initLTWCurrentConversationId, initMessages, store } from '../store';
   import axios from "axios";
 
   export default {
@@ -11,7 +11,7 @@
       return { store }
     },
     methods: {
-      onPullLocal() {
+      onLocalUpload() {
         let mockPullMessages = [
           {
             conversationId: '1',
@@ -23,15 +23,15 @@
           }
         ];
         let mockPullCurrentConversationId = "1";
-        store.messages = mockPullMessages;
-        store.currentConversationId = mockPullCurrentConversationId;
+        store.ltwMessages = mockPullMessages;
+        store.ltwCurrentConversationId = mockPullCurrentConversationId;
       },
       onReset() {
-        store.conversations = initConversations;
-        store.messages = initMessages;
-        store.currentConversationId = initCurrentConversationId;
+        store.ltwConversations = initConversations;
+        store.ltwMessages = initMessages;
+        store.ltwCurrentConversationId = initLTWCurrentConversationId;
       },
-      onPull() {
+      onUpload() {
         let getConversationUr = "http://localhost:86/clouddataproxy/devices/11/conversations?";
         let getMessagesUrl = "http://localhost:86/clouddataproxy/devices/11/messages?";
 
@@ -67,7 +67,8 @@
 <template>
   <div class="sync-frame">
     <MDBBtn color="primary" class="sync" @click="onReset">Reset</MDBBtn>
-    <MDBBtn color="primary" class="sync" @click="onPull">Pull</MDBBtn>
+    <MDBBtn color="primary" class="sync" @click="onLocalUpload">FullUpdate</MDBBtn>
+    <MDBBtn color="primary" class="sync">DeltaUpdate</MDBBtn>
   </div>
 </template>
 
