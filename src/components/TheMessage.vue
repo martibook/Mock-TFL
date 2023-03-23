@@ -3,14 +3,14 @@ import { store } from '../store';
 
 export default {
     data() {
-        return store
+        return { store }
     }
 }
 </script>
 
 <template>
     <ul>
-        <li v-for="(message, i) in messages.filter((message) => message.conversationId == currentConversationId)">
+        <li v-for="(message, i) in store.messages.filter((message) => message.conversationId == store.currentConversationId)">
             <div class="text-in">{{ message.body }}</div>
         </li>
     </ul>

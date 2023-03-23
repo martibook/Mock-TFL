@@ -17,7 +17,7 @@ export default {
 
   <ul>
     <li v-for="(conv, i) in conversations" :class="{ active: conv.id == currentConversationId }"  @click="currentConversationId = conv.id">
-      <ConversationItem :name="conv.name">
+      <ConversationItem :name="conv.recipients[0].phoneNumber">
         <!-- <template #avatar>
           <EcosystemIcon />
         </template> -->
