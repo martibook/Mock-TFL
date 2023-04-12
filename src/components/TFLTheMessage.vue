@@ -1,17 +1,22 @@
 <script>
-import { store } from '../store';
+import { store, getMessagesAndSortByID } from '../store';
 
 export default {
     data() {
         return { store }
+    },
+    methods: {
+        getSortedMessages() {
+            return getMessagesAndSortByID(store.messages, store.currentConversationId);
+        }
     }
 }
 </script>
 
 <template>
     <ul>
-        <li v-for="(message, i) in store.messages.filter((message) => message.conversationId == store.currentConversationId)">
-            <div class="text-in">{{ message.body }}</div>
+        <li v-for="(message, i) in getSortedMessages()" :class="message.sender.phoneNumber == store.selfPhoneNumber? 'out' : 'in'">
+            <div class="text">{{ message.body }}</div>
         </li>
     </ul>
 </template>
@@ -20,8 +25,10 @@ export default {
 
 ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0 1rem;
 }
-    .text-in {
+    .text {
         display: inline-block;
         position: relative;
         padding: 0 1rem;
@@ -37,7 +44,11 @@ ul {
         margin-top: 2rem;
     }
 
-    .text-out {
+    .out {
+        text-align: right;
+    }
+
+    .out .text {
         display: inline-block;
         position: relative;
         padding: 0 1rem;
