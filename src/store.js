@@ -15,27 +15,6 @@ export const DeltaAction = {
     DELETE: 'DELETE'
 }
 
-export const initConversations = [
-    {
-        id: '1',
-        lastModifiedDateTime: new Date().toISOString(),
-        recipients: [
-            {
-                phoneNumber: contact1
-            }
-        ]
-    },
-    {
-        id: '2',
-        lastModifiedDateTime: new Date().toISOString(),
-        recipients: [
-            {
-                phoneNumber: contact2
-            }
-        ]
-    }
-];
-
 export function extractConversations(messages) {
     const conversationToMessages = messages.reduce((conversations, message) => {
         const { conversationId } = message;
