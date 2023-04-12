@@ -1,5 +1,5 @@
 <script>
-import { store } from '../store'
+import { DeltaAction, store, getRecepients, getMessageCount } from '../store'
 
 export default {
     data() {
@@ -12,14 +12,24 @@ export default {
         onKeyup(e) {
             if (e.ctrlKey && e.keyCode === 13 && this.content.length) {
                 // this.sendMessage(this.content);
-                console.log(this.content);
                 var newMessage = {
+                    id: `${store.ltwCurrentConversationId}-${getMessageCount(store.ltwMessages, store.ltwCurrentConversationId) + 1}`,
                     conversationId: store.ltwCurrentConversationId,
                     body: this.content,
-                    direction: 'out'
+                    deltaAction: DeltaAction.CREATE,
+                    lastModifiedDateTime: new Date().toISOString(),
+                    sender: {
+                        phoneNumber: store.selfPhoneNumber
+                    },
+                    recipients: getRecepients(store.ltwConversations, store.ltwCurrentConversationId)
                 }
+
                 store.ltwMessages.push(newMessage)
+                store.ltwDeltaMessages.push(newMessage)
                 this.content = ''
+
+                console.log(newMessage)
+                console.log('ltw delta msg after adding a new one', store.ltwDeltaMessages);
             }
         }
     }

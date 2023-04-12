@@ -14,7 +14,9 @@
     methods: {
         onSubscribe() {
             const token = Math.round(Math.random() * 1000000);
-            const url = `http://localhost:86/push/subscribe/deviceid/${token}`;
+            // const url = `https://dcg-df.microsoft.com/devicedataproxy/push/subscribe/${store.deviceId}/${token}`;
+            const url = `https://dcg-df.microsoft.com/devicedataproxy/sse/test`;
+            // const url = `http://localhost:86/devicedataproxy/push/subscribe/${store.deviceId}/${token}`;
             this.eventSource = new EventSource(url);
 
             this.eventSource.addEventListener("signal", (event) => {
@@ -37,7 +39,7 @@
 
 <style scoped>
 .sync {
-  /* display: none; */
+  display: none;
   text-align: center;
   font-size: 1.2rem;
 }
