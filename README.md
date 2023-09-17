@@ -1,6 +1,6 @@
 # mock-tfl
 
-This template should help get you started developing with Vue 3 in Vite.
+Mock a simple Teams for life UI to help with exploring some features related to my work
 
 ## Recommended IDE Setup
 
